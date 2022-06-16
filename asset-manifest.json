@@ -1,16 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.d443272a.js",
+    "main.css": "/static/css/main.996f81d0.css",
+    "main.js": "/static/js/main.125b1a44.js",
+    "static/js/483.6a765e8f.chunk.js": "/static/js/483.6a765e8f.chunk.js",
     "static/js/787.06bf9608.chunk.js": "/static/js/787.06bf9608.chunk.js",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/earth-americas-solid.svg": "/static/media/earth-americas-solid.d94ca84e5d249be7029e59ecceeaaffb.svg",
+    "static/media/instagram-brands.svg": "/static/media/instagram-brands.813fd06b51b26e101fbbdde32e64af13.svg",
+    "static/media/twitter-brands.svg": "/static/media/twitter-brands.7b0966c673ac146ae16dfeaa6ecc2eb1.svg",
     "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.d443272a.js.map": "/static/js/main.d443272a.js.map",
+    "static/media/youtube-brands.svg": "/static/media/youtube-brands.87350b41a36870581ed6bbca31d713b0.svg",
+    "static/media/tiktok-brands.svg": "/static/media/tiktok-brands.2cd5bfa897010051ff6d10c8a1c370ae.svg",
+    "static/media/heart.svg": "/static/media/heart.40a78c248b5135333374579cc76ffa4d.svg",
+    "static/media/facebook-f-brands.svg": "/static/media/facebook-f-brands.8adca75361b744d17bbeb17b9c804d9d.svg",
+    "main.996f81d0.css.map": "/static/css/main.996f81d0.css.map",
+    "main.125b1a44.js.map": "/static/js/main.125b1a44.js.map",
+    "483.6a765e8f.chunk.js.map": "/static/js/483.6a765e8f.chunk.js.map",
     "787.06bf9608.chunk.js.map": "/static/js/787.06bf9608.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.d443272a.js"
+    "static/css/main.996f81d0.css",
+    "static/js/main.125b1a44.js"
   ]
 }
