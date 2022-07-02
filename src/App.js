@@ -86,7 +86,7 @@ function App() {
         </h1>
         <p style={{ textAlign: "center" }}>
           <a
-            href="https://ballydidean.farm/store"
+            href="https://ballydidean.farm/store/cascadia-sanctuaries"
             target="_blank"
             rel="noopenner noreferrer"
             style={{ color: "white" }}
