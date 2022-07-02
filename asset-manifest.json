@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ab0ae955.css",
-    "main.js": "/static/js/main.04e107c5.js",
+    "main.js": "/static/js/main.eda8832b.js",
     "static/js/483.879268bf.chunk.js": "/static/js/483.879268bf.chunk.js",
     "static/js/787.06bf9608.chunk.js": "/static/js/787.06bf9608.chunk.js",
     "static/media/earth-americas-solid.svg": "/static/media/earth-americas-solid.d94ca84e5d249be7029e59ecceeaaffb.svg",
@@ -13,12 +13,12 @@
     "static/media/heart.svg": "/static/media/heart.40a78c248b5135333374579cc76ffa4d.svg",
     "static/media/facebook-f-brands.svg": "/static/media/facebook-f-brands.8adca75361b744d17bbeb17b9c804d9d.svg",
     "main.ab0ae955.css.map": "/static/css/main.ab0ae955.css.map",
-    "main.04e107c5.js.map": "/static/js/main.04e107c5.js.map",
+    "main.eda8832b.js.map": "/static/js/main.eda8832b.js.map",
     "483.879268bf.chunk.js.map": "/static/js/483.879268bf.chunk.js.map",
     "787.06bf9608.chunk.js.map": "/static/js/787.06bf9608.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ab0ae955.css",
-    "static/js/main.04e107c5.js"
+    "static/js/main.eda8832b.js"
   ]
 }
