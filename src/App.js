@@ -56,7 +56,12 @@ function App() {
     if (map?.current && bounds) {
       const padding = Math.min(100, window.innerWidth / 10);
       map.current.fitBounds(bounds, {
-        padding: { top: 250 + padding, bottom: padding, left: padding, right: padding },
+        padding: {
+          top: 250 + padding,
+          bottom: padding,
+          left: padding,
+          right: padding,
+        },
       });
     }
   }, [bounds]);
@@ -82,8 +87,12 @@ function App() {
           <span style={{ fontSize: "1rem", display: "block" }}>
             farm sanctuaries of
           </span>{" "}
-          <span style={{textTransform: "uppercase"}}>Cascadia</span>
+          <span style={{ textTransform: "uppercase" }}>Cascadia</span>
         </h1>
+        <p style={{ textAlign: "center", color: "rgba(255,255,255,0.8)" }}>
+          Your guide to all the farm sanctuaries in the pacific northwest (WA,
+          OR, BC, ID, and MT)
+        </p>
         <p style={{ textAlign: "center" }}>
           <a
             href="https://ballydidean.farm/store/cascadia-sanctuaries"
