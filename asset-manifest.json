@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f0cd70d2.css",
-    "main.js": "/static/js/main.f5173228.js",
+    "main.js": "/static/js/main.665eaaf2.js",
     "static/js/483.879268bf.chunk.js": "/static/js/483.879268bf.chunk.js",
     "static/js/787.06bf9608.chunk.js": "/static/js/787.06bf9608.chunk.js",
     "static/media/earth-americas-solid.svg": "/static/media/earth-americas-solid.d94ca84e5d249be7029e59ecceeaaffb.svg",
@@ -9,16 +9,19 @@
     "static/media/twitter-brands.svg": "/static/media/twitter-brands.7b0966c673ac146ae16dfeaa6ecc2eb1.svg",
     "index.html": "/index.html",
     "static/media/youtube-brands.svg": "/static/media/youtube-brands.87350b41a36870581ed6bbca31d713b0.svg",
+    "static/media/phone-solid.svg": "/static/media/phone-solid.b4a074baa24a40414433c87293d74020.svg",
+    "static/media/envelope-solid.svg": "/static/media/envelope-solid.6345f82ededa4dc800949734956dc764.svg",
     "static/media/tiktok-brands.svg": "/static/media/tiktok-brands.2cd5bfa897010051ff6d10c8a1c370ae.svg",
     "static/media/heart.svg": "/static/media/heart.40a78c248b5135333374579cc76ffa4d.svg",
     "static/media/facebook-f-brands.svg": "/static/media/facebook-f-brands.8adca75361b744d17bbeb17b9c804d9d.svg",
+    "static/media/location-dot-solid.svg": "/static/media/location-dot-solid.2e0ef750ef3975644482ba424ba65ae0.svg",
     "main.f0cd70d2.css.map": "/static/css/main.f0cd70d2.css.map",
-    "main.f5173228.js.map": "/static/js/main.f5173228.js.map",
+    "main.665eaaf2.js.map": "/static/js/main.665eaaf2.js.map",
     "483.879268bf.chunk.js.map": "/static/js/483.879268bf.chunk.js.map",
     "787.06bf9608.chunk.js.map": "/static/js/787.06bf9608.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f0cd70d2.css",
-    "static/js/main.f5173228.js"
+    "static/js/main.665eaaf2.js"
   ]
 }
