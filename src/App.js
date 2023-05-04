@@ -3,12 +3,15 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 import React, { useEffect, useRef, useState } from "react";
 import Map, { Popup, Marker } from "react-map-gl";
-import { ReactComponent as Heart } from "./heart.svg";
-import { ReactComponent as Website } from "./earth-americas-solid.svg";
+import { ReactComponent as Email } from "./envelope-solid.svg";
 import { ReactComponent as Facebook } from "./facebook-f-brands.svg";
+import { ReactComponent as Heart } from "./heart.svg";
 import { ReactComponent as Instagram } from "./instagram-brands.svg";
-import { ReactComponent as Twitter } from "./twitter-brands.svg";
+import { ReactComponent as Location } from "./location-dot-solid.svg";
+import { ReactComponent as Phone } from "./phone-solid.svg";
 import { ReactComponent as TikTok } from "./tiktok-brands.svg";
+import { ReactComponent as Twitter } from "./twitter-brands.svg";
+import { ReactComponent as Website } from "./earth-americas-solid.svg";
 import { ReactComponent as YouTube } from "./youtube-brands.svg";
 
 const MAPBOX_ACCESS_TOKEN =
@@ -162,6 +165,15 @@ function App() {
           >
             <h3>{selected.name}</h3>
             <div style={{ display: "flex", justifyContent: "center", gap: 2 }}>
+              {selected.address && (
+                <a
+                  href={`https://www.google.com/maps/search/${selected.address}, ${selected.city}, ${selected.state}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Location style={ICON_STYLE} />
+                </a>
+              )}
               {selected.website && (
                 <a
                   href={`http://${selected.website}`}
@@ -169,6 +181,24 @@ function App() {
                   rel="noopener noreferrer"
                 >
                   <Website style={ICON_STYLE} />
+                </a>
+              )}
+              {selected.email && (
+                <a
+                  href={`mailto:${selected.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Email style={ICON_STYLE} />
+                </a>
+              )}
+              {selected.phone && (
+                <a
+                  href={`tel:${selected.phone}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Phone style={ICON_STYLE} />
                 </a>
               )}
               {selected.facebook && (
