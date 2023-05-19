@@ -134,7 +134,7 @@ export function Marker({
                 value={sanctuary.youtube}
                 link={sanctuary.youtube}
                 Icon={YouTube}
-                text={`@${sanctuary.youtube}`}
+                text="YouTube"
               />
               <Contact
                 value={sanctuary.tiktok}
