@@ -131,28 +131,46 @@ export function Home() {
             Ballydídean
           </a>
         </em>
-        <div
-          style={{
-            position: "absolute",
-            bottom: -45,
-            left: -1,
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Search by name"
-            value={searchText}
-            onChange={(event) => setSearchText(event.target.value)}
+        {sanctuaries && (
+          <div
             style={{
-              padding: 6,
-              borderRadius: 4,
-              width: 200,
-              border: "2px solid white",
-              backgroundColor: "#e5e9e2",
-              boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+              position: "absolute",
+              bottom: -45,
+              left: -1,
             }}
-          />
-        </div>
+          >
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchText}
+              onChange={(event) => setSearchText(event.target.value)}
+              style={{
+                padding: 6,
+                borderRadius: 4,
+                width: 200,
+                border: "2px solid white",
+                backgroundColor: "#e5e9e2",
+                boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+              }}
+            />
+            {searchText && (
+              <div
+                style={{
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                  fontSize: "2rem",
+                  color: "black",
+                  position: "absolute",
+                  top: -5,
+                  right: 4,
+                }}
+                onClick={() => setSearchText("")}
+              >
+                ⨯
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <Map
         ref={map}
