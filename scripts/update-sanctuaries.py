@@ -3,13 +3,12 @@
 
 import json
 import math
-import os
 import re
-import tempfile
-import unicodedata
 import urllib.request
 from argparse import ArgumentParser
 from pathlib import Path
+
+from build_site import build_site, normalize_url, sanctuary_slug
 
 SOURCE_URL = (
     "https://script.google.com/macros/s/"
@@ -17,7 +16,7 @@ SOURCE_URL = (
 )
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_PATH = PROJECT_ROOT / "static" / "data" / "sanctuaries.json"
-RESERVED_SLUGS = {"emails"}
+RESERVED_SLUGS = {"emails", "node-modules", "scripts", "static"}
 MINIMUM_RETAINED_RATIO = 0.9
 
 
@@ -30,16 +29,6 @@ def parse_arguments():
         help="accept a directory shrink larger than ten percent"
     )
     return parser.parse_args()
-
-
-# normalize route slugs
-def sanctuary_slug(name):
-    normalized_name = unicodedata.normalize("NFKD", name)
-    # remove combining accents
-    unaccented_name = "".join(
-        character for character in normalized_name if not unicodedata.combining(character)
-    )
-    return re.sub(r"(^-|-$)", "", re.sub(r"[^a-z0-9]+", "-", unaccented_name.lower()))
 
 
 # normalize spreadsheet strings
@@ -60,6 +49,63 @@ def normalize_sanctuaries(data):
         })
 
     return normalized_rows
+
+
+# identify sanctuary records
+def sanctuary_identity_values(sanctuary):
+    """Return stable matching values ordered from strongest to weakest."""
+    website = re.sub(
+        r"^https?://|/$",
+        "",
+        str(sanctuary.get("website") or "").strip().lower()
+    )
+    email = str(sanctuary.get("email") or "").strip().casefold()
+    name = str(sanctuary.get("name") or "").strip().casefold()
+    return [
+        f"website:{website}" if website else "",
+        f"email:{email}" if email else "",
+        f"name:{name}" if name else ""
+    ]
+
+
+# preserve canonical routes
+def preserve_route_slugs(data):
+    """Keep published slugs stable when names change but identity fields remain."""
+    existing_by_identity = {}
+
+    # index the current snapshot
+    if OUTPUT_PATH.exists():
+        with OUTPUT_PATH.open(encoding="utf-8") as snapshot_file:
+            existing_data = json.load(snapshot_file)
+
+        # map stable identities
+        for sanctuary in existing_data:
+            for identity in sanctuary_identity_values(sanctuary):
+                # collect every identity owner
+                if identity:
+                    existing_by_identity.setdefault(identity, []).append(sanctuary)
+
+    # assign one canonical slug per row
+    for sanctuary in data:
+        # leave malformed rows for validation
+        if not isinstance(sanctuary, dict):
+            continue
+
+        existing_sanctuary = next(
+            (
+                existing_by_identity[identity][0]
+                for identity in sanctuary_identity_values(sanctuary)
+                if identity in existing_by_identity and len(existing_by_identity[identity]) == 1
+            ),
+            None
+        )
+        sanctuary["slug"] = (
+            existing_sanctuary.get("slug")
+            if existing_sanctuary and existing_sanctuary.get("slug")
+            else sanctuary_slug(str(sanctuary.get("name") or ""))
+        )
+
+    return data
 
 
 # download spreadsheet rows
@@ -100,7 +146,7 @@ def validate_sanctuaries(data):
             raise ValueError(f"Sanctuary row {index} is missing a name")
 
         normalized_name = name.strip().casefold()
-        slug = sanctuary_slug(name)
+        slug = sanctuary.get("slug")
 
         # prevent ambiguous directory entries
         if normalized_name in names:
@@ -109,7 +155,11 @@ def validate_sanctuaries(data):
         names.add(normalized_name)
 
         # require usable routes
-        if not slug or slug in RESERVED_SLUGS:
+        if (
+            not isinstance(slug, str)
+            or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug)
+            or slug in RESERVED_SLUGS
+        ):
             raise ValueError(f"Reserved or empty sanctuary route: {name.strip()}")
 
         # prevent ambiguous routes
@@ -117,6 +167,14 @@ def validate_sanctuaries(data):
             raise ValueError(f"Duplicate sanctuary route: {slug}")
 
         slugs.add(slug)
+
+        # validate configured public urls
+        for field in ("website", "youtube"):
+            value = sanctuary.get(field)
+
+            # validate only present values
+            if value:
+                normalize_url(value, context=f"{field} URL for {name.strip()}")
 
         longitude = sanctuary.get("longitude")
         latitude = sanctuary.get("latitude")
@@ -160,26 +218,18 @@ def validate_snapshot_size(data, force):
             "review the source and rerun with --force if the reduction is intentional"
         )
 
+    existing_slugs = {
+        sanctuary.get("slug") or sanctuary_slug(sanctuary["name"])
+        for sanctuary in existing_data
+    }
+    incoming_slugs = {sanctuary["slug"] for sanctuary in data}
 
-# replace the snapshot atomically
-def write_snapshot(data):
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-
-    # keep partial downloads out of the site
-    with tempfile.NamedTemporaryFile(
-        "w",
-        dir=OUTPUT_PATH.parent,
-        encoding="utf-8",
-        prefix=f".{OUTPUT_PATH.name}.",
-        suffix=".tmp",
-        delete=False
-    ) as temporary_file:
-        temporary_path = Path(temporary_file.name)
-        json.dump(data, temporary_file, ensure_ascii=False, indent=2)
-        temporary_file.write("\n")
-
-    os.replace(temporary_path, OUTPUT_PATH)
-    OUTPUT_PATH.chmod(0o644)
+    # reject widespread canonical route loss
+    if len(existing_slugs & incoming_slugs) < minimum_count:
+        raise ValueError(
+            f"Refusing to retain only {len(existing_slugs & incoming_slugs)} of "
+            f"{len(existing_slugs)} canonical routes; rerun with --force if intentional"
+        )
 
 
 # refresh the local data
@@ -187,9 +237,10 @@ def main():
     arguments = parse_arguments()
     sanctuaries = download_sanctuaries()
     sanctuaries = normalize_sanctuaries(sanctuaries)
+    sanctuaries = preserve_route_slugs(sanctuaries)
     validate_sanctuaries(sanctuaries)
     validate_snapshot_size(sanctuaries, arguments.force)
-    write_snapshot(sanctuaries)
+    build_site(sanctuaries, snapshot_path=OUTPUT_PATH)
     print(f"Updated {OUTPUT_PATH.relative_to(PROJECT_ROOT)} with {len(sanctuaries)} sanctuaries")
 
 

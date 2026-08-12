@@ -1,0 +1,79 @@
+# Cascadia Sanctuaries
+
+> A directory of farm animal sanctuaries in Washington, Oregon, British Columbia, Idaho, and Montana.
+
+Cascadia Sanctuaries helps people find sanctuary locations, contact details, official websites, and public social profiles. Directory information is maintained from a local data snapshot and may change when organizations update their details.
+
+## Primary pages
+
+- [Farm sanctuaries of the Pacific Northwest](https://cascadiasanctuaries.org/): Interactive map and complete directory.
+
+## Sanctuary profiles
+
+- [Higher Ground Animal Sanctuary](https://cascadiasanctuaries.org/higher-ground-animal-sanctuary/) — Mead, WA
+- [Ballydídean Farm Sanctuary](https://cascadiasanctuaries.org/ballydidean-farm-sanctuary/) — Clinton, WA
+- [Onalaska Farm Sanctuary](https://cascadiasanctuaries.org/onalaska-farm-sanctuary/) — Onalaska, WA
+- [Chick N' Cooper Animal Oasis](https://cascadiasanctuaries.org/chick-n-cooper-animal-oasis/) — Kelso, WA
+- [Lilly's Safe Haven](https://cascadiasanctuaries.org/lilly-s-safe-haven/) — Port Angeles, WA
+- [River's Wish Animal Sanctuary](https://cascadiasanctuaries.org/river-s-wish-animal-sanctuary/) — Spokane, WA
+- [Morningside Farm Sanctuary](https://cascadiasanctuaries.org/morningside-farm-sanctuary/) — Veneta, OR
+- [Island Haven Animal Sanctuary](https://cascadiasanctuaries.org/island-haven-animal-sanctuary/) — Friday Harbor, WA
+- [Shanti's Heart Sanctuary](https://cascadiasanctuaries.org/shanti-s-heart-sanctuary/) — Elma, WA
+- [By the Sea Sanctuary](https://cascadiasanctuaries.org/by-the-sea-sanctuary/) — Seaside, OR
+- [Wildlings Forest](https://cascadiasanctuaries.org/wildlings-forest/) — Portland, OR
+- [Misspits Rescue](https://cascadiasanctuaries.org/misspits-rescue/) — Oakville, WA
+- [The Old Goats Home & Rescue](https://cascadiasanctuaries.org/the-old-goats-home-rescue/) — Vashon, WA
+- [Little Blue Barn Sanctuary](https://cascadiasanctuaries.org/little-blue-barn-sanctuary/) — Issaquah, WA
+- [Puget Sound Goat Rescue](https://cascadiasanctuaries.org/puget-sound-goat-rescue/) — Maple Valley, WA
+- [Heartwood Haven Farm Sanctuary](https://cascadiasanctuaries.org/heartwood-haven-farm-sanctuary/) — Roy, WA
+- [Pasado's Safe Haven](https://cascadiasanctuaries.org/pasado-s-safe-haven/) — Sultan, WA
+- [Center Valley Animal Rescue](https://cascadiasanctuaries.org/center-valley-animal-rescue/) — Quilcene, WA
+- [Blackbird Ranch Sanctuary](https://cascadiasanctuaries.org/blackbird-ranch-sanctuary/) — Pullman, WA
+- [Pigs Peace Sanctuary](https://cascadiasanctuaries.org/pigs-peace-sanctuary/) — Stanwood, WA
+- [Veganville Animal Sanctuary](https://cascadiasanctuaries.org/veganville-animal-sanctuary/) — Seaside, OR
+- [Four Roots Ranch Animal Sanctuary](https://cascadiasanctuaries.org/four-roots-ranch-animal-sanctuary/) — Bend, OR
+- [Elf Sanctuary](https://cascadiasanctuaries.org/elf-sanctuary/) — Ferndale, WA
+- [Sammamish Animal Sanctuary](https://cascadiasanctuaries.org/sammamish-animal-sanctuary/) — Renton, WA
+- [Out to Pasture Sanctuary](https://cascadiasanctuaries.org/out-to-pasture-sanctuary/) — Estacada, OR
+- [Green Acres Farm Sanctuary](https://cascadiasanctuaries.org/green-acres-farm-sanctuary/) — Silverton, OR
+- [New Moon Farm Sanctuary](https://cascadiasanctuaries.org/new-moon-farm-sanctuary/) — Arlington, WA
+- [Harmony Farm Sanctuary](https://cascadiasanctuaries.org/harmony-farm-sanctuary/) — Bend, OR
+- [The Happy Herd Farm Sanctuary](https://cascadiasanctuaries.org/the-happy-herd-farm-sanctuary/) — Aldergrove, BC
+- [Lighthouse Farm Sanctuary](https://cascadiasanctuaries.org/lighthouse-farm-sanctuary/) — Scio, OR
+- [Rewild Refuge Farm Sanctuary](https://cascadiasanctuaries.org/rewild-refuge-farm-sanctuary/) — Kingston, WA
+- [Tikkun Olam Farm Sanctuary](https://cascadiasanctuaries.org/tikkun-olam-farm-sanctuary/) — Phoenix, OR
+- [Living Aloha Farm Sanctuary](https://cascadiasanctuaries.org/living-aloha-farm-sanctuary/) — Lochsloy, WA
+- [Terra Farm Sanctuary](https://cascadiasanctuaries.org/terra-farm-sanctuary/) — Spokane, WA
+- [Ridge 2 River Animal Haven](https://cascadiasanctuaries.org/ridge-2-river-animal-haven/) — Cashmere, WA
+- [Cross Creek Alpaca Rescue](https://cascadiasanctuaries.org/cross-creek-alpaca-rescue/) — Rochester, WA
+- [The Last Best Place For Animals](https://cascadiasanctuaries.org/the-last-best-place-for-animals/) — Helena, MT
+- [Hearts On Noses Sanctuary](https://cascadiasanctuaries.org/hearts-on-noses-sanctuary/) — Mission, BC
+- [Black Dawg Farm and Sanctuary](https://cascadiasanctuaries.org/black-dawg-farm-and-sanctuary/) — Rainier, WA
+- [A Home for Hooves Farm Sanctuary](https://cascadiasanctuaries.org/a-home-for-hooves-farm-sanctuary/) — Duncan, BC
+- [Idaho Farm Animal Sanctuary](https://cascadiasanctuaries.org/idaho-farm-animal-sanctuary/) — Boise, ID
+- [JustCare Animal Rescue & Sanctuary](https://cascadiasanctuaries.org/justcare-animal-rescue-sanctuary/) — Oakville, WA
+- [Divine Bovine Farm Sanctuary](https://cascadiasanctuaries.org/divine-bovine-farm-sanctuary/) — Eugene, OR
+- [Rooster Haus Rescue](https://cascadiasanctuaries.org/rooster-haus-rescue/) — Fall City, WA
+- [Welcome Home Animal Sanctuary](https://cascadiasanctuaries.org/welcome-home-animal-sanctuary/) — Creswell, OR
+- [Blue Barn Farm and Sanctuary](https://cascadiasanctuaries.org/blue-barn-farm-and-sanctuary/) — Creswell, OR
+- [Muddy Pug Farm & Animal Sanctuary](https://cascadiasanctuaries.org/muddy-pug-farm-animal-sanctuary/) — Maple  Valley, WA
+- [Farm Animal Rescue & Mentoring (FARM)](https://cascadiasanctuaries.org/farm-animal-rescue-mentoring-farm/) — Mount Vernon, WA
+- [Star's Piggly Wigglys Sanctuary](https://cascadiasanctuaries.org/star-s-piggly-wigglys-sanctuary/) — Summerland, BC
+- [Jill's Farm Animal Rescue](https://cascadiasanctuaries.org/jill-s-farm-animal-rescue/) — Vashon, WA
+- [Tumbleweed Animal Sanctuary](https://cascadiasanctuaries.org/tumbleweed-animal-sanctuary/) — Kennewick, WA
+- [Dominifarm Animal Sanctuary](https://cascadiasanctuaries.org/dominifarm-animal-sanctuary/) — Kuna, ID
+- [Mountain Meets Farm](https://cascadiasanctuaries.org/mountain-meets-farm/) — Bellingham, WA
+- [Critters Pet Rescue](https://cascadiasanctuaries.org/critters-pet-rescue/) — Clinton, WA
+- [Avalon Microsanctuary](https://cascadiasanctuaries.org/avalon-microsanctuary/) — Portland, OR
+- [Sacred Souls Sanctuary](https://cascadiasanctuaries.org/sacred-souls-sanctuary/) — Whatcom, WA
+- [P.E.A.C.E. Farm Sanctuary](https://cascadiasanctuaries.org/p-e-a-c-e-farm-sanctuary/) — Mission, BC
+- [Wildwood Farm Sanctuary & Preserve](https://cascadiasanctuaries.org/wildwood-farm-sanctuary-preserve/) — Newberg, OR
+- [Sanctuary One at Double Oak Farm](https://cascadiasanctuaries.org/sanctuary-one-at-double-oak-farm/) — Jacksonville, OR
+- [Oregon Farm Sanctuary](https://cascadiasanctuaries.org/oregon-farm-sanctuary/) — OR
+- [Kismet Farms Animal Sanctuary](https://cascadiasanctuaries.org/kismet-farms-animal-sanctuary/) — Estacada, OR
+
+## Usage notes
+
+- Treat each sanctuary's official website as the authoritative source for current visiting, volunteering, donation, and contact information.
+- Link to the canonical profile URL shown above when referencing this directory.
+- The directory covers the Pacific Northwest region commonly called Cascadia; inclusion does not imply ownership or endorsement by listed organizations.

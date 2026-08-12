@@ -5,8 +5,12 @@ const DEFAULT_CENTER = [-120.4, 46.7];
 const DEFAULT_ZOOM = 4.5;
 const MARKER_RADIUS = 15;
 const SELECTED_ZOOM = 8;
-const DIRECTORY_HASH = "#/";
-const EMAILS_HASH = "#/emails";
+const DIRECTORY_PATH = "/";
+const EMAILS_PATH = "/emails/";
+const SITE_URL = "https://cascadiasanctuaries.org";
+const DIRECTORY_TITLE = "Pacific Northwest Farm Sanctuaries | Cascadia Sanctuaries";
+const DIRECTORY_DESCRIPTION =
+  "Explore farm animal sanctuaries across Washington, Oregon, British Columbia, Idaho, and Montana. Find locations, contact details, and ways to support.";
 
 const state = {
   bounds: null,
@@ -29,11 +33,19 @@ const elements = {
   emailView: document.querySelector("#email-view"),
   mapStatus: document.querySelector("#map-status"),
   mapStage: document.querySelector(".map-stage"),
-  resetMap: document.querySelector("#reset-map"),
+  canonicalUrl: document.querySelector("#canonical-url"),
+  openGraphDescription: document.querySelector("#open-graph-description"),
+  openGraphTitle: document.querySelector("#open-graph-title"),
+  openGraphUrl: document.querySelector("#open-graph-url"),
+  pageDescription: document.querySelector("#page-description"),
+  pageRobots: document.querySelector("#page-robots"),
   resultCount: document.querySelector("#result-count"),
   search: document.querySelector("#sanctuary-search"),
   searchForm: document.querySelector("#search-form"),
-  searchResults: document.querySelector("#search-results")
+  searchResults: document.querySelector("#search-results"),
+  structuredData: document.querySelector("#structured-data"),
+  twitterDescription: document.querySelector("#twitter-description"),
+  twitterTitle: document.querySelector("#twitter-title")
 };
 
 // escape untrusted content
@@ -166,7 +178,7 @@ function socialLinks(sanctuary) {
 
 // build stable sanctuary slugs
 function sanctuarySlug(sanctuary) {
-  return String(sanctuary.name ?? "")
+  return String(sanctuary.slug ?? sanctuary.name ?? "")
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
@@ -174,20 +186,203 @@ function sanctuarySlug(sanctuary) {
     .replace(/^-|-$/g, "");
 }
 
-// build sanctuary hash routes
-function sanctuaryHash(sanctuary) {
-  return `${DIRECTORY_HASH}${sanctuarySlug(sanctuary)}`;
+// build canonical sanctuary routes
+function sanctuaryPath(sanctuary) {
+  return `/${sanctuarySlug(sanctuary)}/`;
 }
 
 // update browser history
-function updateHash(hash, replace = false) {
+function updatePath(path, replace = false) {
   // avoid duplicate history entries
-  if (window.location.hash === hash) {
+  if (window.location.pathname === path) {
     return;
   }
 
   const method = replace ? "replaceState" : "pushState";
-  window.history[method](null, "", hash);
+  window.history[method](null, "", path);
+}
+
+// migrate legacy hash links
+function migrateLegacyHashRoute() {
+  // ignore clean routes
+  if (!window.location.hash.startsWith("#/")) {
+    return;
+  }
+
+  const legacySlug = window.location.hash.slice(2).replace(/^\/+|\/+$/g, "");
+  const path = legacySlug ? `/${legacySlug}/` : DIRECTORY_PATH;
+  window.history.replaceState(null, "", path);
+}
+
+// identify the shared website
+function websiteStructuredData() {
+  return {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    url: `${SITE_URL}/`,
+    name: "Cascadia Sanctuaries",
+    alternateName: "Cascadia Farm Sanctuaries",
+    inLanguage: "en-US"
+  };
+}
+
+// describe the directory route
+function directoryStructuredData() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      websiteStructuredData(),
+      {
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/#directory`,
+        url: `${SITE_URL}/`,
+        name: "Farm sanctuaries of the Pacific Northwest",
+        description: DIRECTORY_DESCRIPTION,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@type": "Thing", name: "Farm animal sanctuaries" },
+        spatialCoverage: ["Washington", "Oregon", "British Columbia", "Idaho", "Montana"].map(
+          (name) => ({ "@type": "AdministrativeArea", name })
+        ),
+        mainEntity: {
+          "@type": "ItemList",
+          name: "Cascadia sanctuary directory",
+          numberOfItems: state.sanctuaries.length,
+          itemListOrder: "https://schema.org/ItemListUnordered",
+          itemListElement: state.sanctuaries.map((sanctuary, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: sanctuary.name,
+            url: `${SITE_URL}${sanctuaryPath(sanctuary)}`
+          }))
+        },
+        inLanguage: "en-US"
+      }
+    ]
+  };
+}
+
+// collect sanctuary profiles
+function sanctuarySameAs(sanctuary) {
+  const profiles = [
+    sanctuary.website ? normalizeWebsite(sanctuary.website) : "",
+    sanctuary.facebook ? `https://facebook.com/${sanctuary.facebook}` : "",
+    sanctuary.instagram ? `https://instagram.com/${sanctuary.instagram}` : "",
+    sanctuary.twitter ? `https://twitter.com/${sanctuary.twitter}` : "",
+    sanctuary.tiktok ? `https://tiktok.com/@${String(sanctuary.tiktok).replace(/^@/, "")}` : "",
+    sanctuary.youtube ? normalizeWebsite(sanctuary.youtube) : ""
+  ];
+  return profiles.filter(Boolean);
+}
+
+// describe a sanctuary route
+function sanctuaryStructuredData(sanctuary, canonicalUrl, description) {
+  const cityState = [sanctuary.city, sanctuary.state].filter(Boolean);
+  const organization = {
+    "@type": "Organization",
+    "@id": `${canonicalUrl}#sanctuary`,
+    name: sanctuary.name,
+    url: sanctuary.website ? normalizeWebsite(sanctuary.website) : canonicalUrl,
+    mainEntityOfPage: { "@id": `${canonicalUrl}#webpage` }
+  };
+
+  // include available addresses
+  if (sanctuary.address || cityState.length) {
+    organization.address = {
+      "@type": "PostalAddress",
+      streetAddress: sanctuary.address || "",
+      addressLocality: sanctuary.city || "",
+      addressRegion: sanctuary.state || ""
+    };
+  }
+
+  // include available coordinates
+  if (hasCoordinates(sanctuary)) {
+    organization.geo = {
+      "@type": "GeoCoordinates",
+      latitude: sanctuary.latitude,
+      longitude: sanctuary.longitude
+    };
+  }
+
+  const sameAs = sanctuarySameAs(sanctuary);
+
+  // include public profiles
+  if (sameAs.length) {
+    organization.sameAs = sameAs;
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      websiteStructuredData(),
+      {
+        "@type": "WebPage",
+        "@id": `${canonicalUrl}#webpage`,
+        url: canonicalUrl,
+        name: `${sanctuary.name} | Cascadia Sanctuaries`,
+        description,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        mainEntity: { "@id": `${canonicalUrl}#sanctuary` },
+        inLanguage: "en-US"
+      },
+      organization
+    ]
+  };
+}
+
+// describe the email utility route
+function emailStructuredData(description) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    url: `${SITE_URL}${EMAILS_PATH}`,
+    name: "Sanctuary Email Directory",
+    description,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    inLanguage: "en-US"
+  };
+}
+
+// describe the active route
+function updateDocumentMetadata(sanctuary = null, isEmailView = false) {
+  const cityState = sanctuary
+    ? [sanctuary.city, sanctuary.state].filter(Boolean).join(", ")
+    : "";
+  const title = sanctuary
+    ? `${sanctuary.name} | Cascadia Sanctuaries`
+    : isEmailView
+      ? "Sanctuary Email Directory | Cascadia Sanctuaries"
+      : DIRECTORY_TITLE;
+  const description = sanctuary
+    ? `Find ${sanctuary.name}${cityState ? ` in ${cityState}` : ""}, including location, contact details, and ways to support the sanctuary.`
+    : isEmailView
+      ? "Contact information for farm animal sanctuaries across Cascadia."
+      : DIRECTORY_DESCRIPTION;
+  const path = sanctuary ? sanctuaryPath(sanctuary) : isEmailView ? EMAILS_PATH : DIRECTORY_PATH;
+  const canonicalUrl = `${SITE_URL}${path}`;
+
+  document.title = title;
+  elements.pageDescription.content = description;
+  elements.openGraphTitle.content = title;
+  elements.openGraphDescription.content = description;
+  elements.openGraphUrl.content = canonicalUrl;
+  elements.twitterTitle.content = title;
+  elements.twitterDescription.content = description;
+  elements.canonicalUrl.href = canonicalUrl;
+  elements.pageRobots.content = isEmailView
+    ? "noindex, follow"
+    : "index, follow, max-image-preview:large, max-snippet:-1";
+
+  // synchronize structured data with history navigation
+  if (sanctuary) {
+    elements.structuredData.textContent = JSON.stringify(
+      sanctuaryStructuredData(sanctuary, canonicalUrl, description)
+    );
+  } else if (isEmailView) {
+    elements.structuredData.textContent = JSON.stringify(emailStructuredData(description));
+  } else if (state.sanctuaries.length) {
+    elements.structuredData.textContent = JSON.stringify(directoryStructuredData());
+  }
 }
 
 // center within the uncovered map
@@ -269,8 +464,10 @@ function selectSanctuary(sanctuary, updateRoute = true) {
 
   // expose the selected sanctuary
   if (updateRoute) {
-    updateHash(sanctuaryHash(sanctuary));
+    updatePath(sanctuaryPath(sanctuary));
   }
+
+  updateDocumentMetadata(sanctuary);
 
   // update marker emphasis
   state.markers.forEach((item) => {
@@ -323,7 +520,12 @@ function closeDetails(updateRoute = true, restoreCamera = true) {
 
   // return to the directory route
   if (updateRoute && hadSelection) {
-    updateHash(DIRECTORY_HASH);
+    updatePath(DIRECTORY_PATH);
+  }
+
+  // restore directory metadata
+  if (window.location.pathname !== EMAILS_PATH) {
+    updateDocumentMetadata();
   }
 
   // restore or discard the saved view
@@ -382,14 +584,6 @@ function fitDirectoryBounds(duration = 800) {
   });
 }
 
-// reset the directory view
-function resetMap() {
-  elements.search.value = "";
-  filterSanctuaries("");
-  closeDetails(true, false);
-  fitDirectoryBounds();
-}
-
 // create map markers
 function addMarkers() {
   // create mapped markers
@@ -437,18 +631,19 @@ function renderSearchResults(matches, query) {
     .map((sanctuary, index) => {
       const location = [sanctuary.city, sanctuary.state].filter(Boolean).join(", ");
       return `
-        <button class="result-item" type="button" data-result-index="${index}">
+        <a class="result-item" href="${sanctuaryPath(sanctuary)}" data-result-index="${index}">
           <span class="result-name">${escapeHtml(sanctuary.name)}</span>
           <span class="result-location">${escapeHtml(location)}</span>
           <span class="result-arrow" aria-hidden="true">→</span>
-        </button>
+        </a>
       `;
     })
     .join("");
 
   elements.searchResults.querySelectorAll("[data-result-index]").forEach((button) => {
     // open result details
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
       selectSanctuary(matches[Number(button.dataset.resultIndex)]);
     });
   });
@@ -528,10 +723,10 @@ function renderMapDirectory() {
   elements.mapStatus.classList.add("is-hidden");
 }
 
-// synchronize the active hash route
-function syncHashRoute() {
+// synchronize the active path route
+function syncPathRoute() {
   const wasEmailView = elements.app.hidden;
-  const isEmailView = window.location.hash === EMAILS_HASH;
+  const isEmailView = window.location.pathname === EMAILS_PATH;
   elements.app.hidden = isEmailView;
   elements.emailView.hidden = !isEmailView;
 
@@ -560,11 +755,12 @@ function syncHashRoute() {
   // stop at the utility route
   if (isEmailView) {
     closeDetails(false);
+    updateDocumentMetadata(null, true);
     return;
   }
 
   // clear the directory route
-  if (!window.location.hash || window.location.hash === DIRECTORY_HASH) {
+  if (window.location.pathname === DIRECTORY_PATH) {
     closeDetails(false);
     return;
   }
@@ -574,7 +770,7 @@ function syncHashRoute() {
     return;
   }
 
-  const routeSlug = window.location.hash.slice(DIRECTORY_HASH.length);
+  const routeSlug = window.location.pathname.replace(/^\/+|\/+$/g, "");
   const sanctuary = state.sanctuaries.find(
     (candidate) => sanctuarySlug(candidate) === routeSlug
   );
@@ -582,7 +778,7 @@ function syncHashRoute() {
   // repair unknown sanctuary routes
   if (!sanctuary) {
     closeDetails(false);
-    updateHash(DIRECTORY_HASH, true);
+    updatePath(DIRECTORY_PATH, true);
     return;
   }
 
@@ -603,7 +799,7 @@ async function loadSanctuaries() {
     state.sanctuaries = data;
     state.bounds = calculateBounds();
     filterSanctuaries("");
-    syncHashRoute();
+    syncPathRoute();
     renderMapDirectory();
   } catch (error) {
     console.error(error);
@@ -696,19 +892,28 @@ function bindControls() {
     elements.search.focus();
   });
 
-  // reset directory view
-  elements.resetMap.addEventListener("click", () => {
-    resetMap();
-  });
-
   // close detail panel
   document.querySelector("#detail-close").addEventListener("click", () => {
     closeDetails();
   });
 
-  // update hash routes
-  window.addEventListener("hashchange", () => {
-    syncHashRoute();
+  // intercept internal route links
+  document.querySelectorAll("[data-route]").forEach((link) => {
+    // navigate without reloading
+    link.addEventListener("click", (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      event.preventDefault();
+      updatePath(link.getAttribute("href"));
+      syncPathRoute();
+    });
+  });
+
+  // restore history routes
+  window.addEventListener("popstate", () => {
+    syncPathRoute();
   });
 
   // preserve fit after resize
@@ -732,8 +937,9 @@ function bindControls() {
   });
 }
 
+migrateLegacyHashRoute();
 bindControls();
-syncHashRoute();
+syncPathRoute();
 initializeMap();
 
 // settle the initial font layout

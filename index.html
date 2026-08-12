@@ -4,10 +4,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#17382d">
+    <meta id="page-robots" name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <meta
+      id="page-description"
       name="description"
-      content="Explore the organizations giving farmed animals a safe place to land across Washington, Oregon, British Columbia, and Idaho."
+      content="Explore farm animal sanctuaries across Washington, Oregon, British Columbia, Idaho, and Montana. Find locations, contact details, and ways to support."
     >
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Cascadia Sanctuaries">
+    <meta id="open-graph-title" property="og:title" content="Pacific Northwest Farm Sanctuaries">
+    <meta
+      id="open-graph-description"
+      property="og:description"
+      content="Explore farm animal sanctuaries across Washington, Oregon, British Columbia, Idaho, and Montana. Find locations, contact details, and ways to support."
+    >
+    <meta id="open-graph-url" property="og:url" content="https://cascadiasanctuaries.org/">
+    <meta property="og:image" content="https://cascadiasanctuaries.org/static/media/cascadia-sanctuaries-logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1254">
+    <meta property="og:image:height" content="1254">
+    <meta property="og:image:alt" content="Cascadia Sanctuaries heart and mountain logo">
+    <meta name="twitter:card" content="summary">
+    <meta id="twitter-title" name="twitter:title" content="Pacific Northwest Farm Sanctuaries">
+    <meta
+      id="twitter-description"
+      name="twitter:description"
+      content="Explore farm animal sanctuaries across Washington, Oregon, British Columbia, Idaho, and Montana. Find locations, contact details, and ways to support."
+    >
+    <meta name="twitter:image" content="https://cascadiasanctuaries.org/static/media/cascadia-sanctuaries-logo.png">
+    <meta name="twitter:image:alt" content="Cascadia Sanctuaries heart and mountain logo">
+    <link id="canonical-url" rel="canonical" href="https://cascadiasanctuaries.org/">
     <link rel="icon" href="/static/media/cascadia-favicon.svg?v=20260812" type="image/svg+xml" sizes="any">
     <link rel="apple-touch-icon" href="/static/media/cascadia-sanctuaries-logo.png?v=20260812">
     <link rel="manifest" href="/manifest.json">
@@ -21,8 +48,441 @@
       href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
       rel="stylesheet"
     >
-    <link href="/static/css/site.css?v=20260812-review-fixes" rel="stylesheet">
-    <title>Cascadia Sanctuaries</title>
+    <link href="/static/css/site.css?v=20260812-clean-routes" rel="stylesheet">
+    <title>Pacific Northwest Farm Sanctuaries | Cascadia Sanctuaries</title>
+    <script id="structured-data" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cascadiasanctuaries.org/#website",
+      "url": "https://cascadiasanctuaries.org/",
+      "name": "Cascadia Sanctuaries",
+      "alternateName": "Cascadia Farm Sanctuaries",
+      "description": "A directory of farm animal sanctuaries across Washington, Oregon, British Columbia, Idaho, and Montana.",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://cascadiasanctuaries.org/#directory",
+      "url": "https://cascadiasanctuaries.org/",
+      "name": "Farm sanctuaries of the Pacific Northwest",
+      "description": "Explore organizations giving farmed animals a safe place to land across Washington, Oregon, British Columbia, Idaho, and Montana.",
+      "isPartOf": {
+        "@id": "https://cascadiasanctuaries.org/#website"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Farm animal sanctuaries"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://cascadiasanctuaries.org/static/media/cascadia-sanctuaries-logo.png",
+        "width": 1254,
+        "height": 1254
+      },
+      "spatialCoverage": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Washington"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oregon"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "British Columbia"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Idaho"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Montana"
+        }
+      ],
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Cascadia sanctuary directory",
+        "numberOfItems": 61,
+        "itemListOrder": "https://schema.org/ItemListUnordered",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Higher Ground Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/higher-ground-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Ballydídean Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/ballydidean-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Onalaska Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/onalaska-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Chick N' Cooper Animal Oasis",
+            "url": "https://cascadiasanctuaries.org/chick-n-cooper-animal-oasis/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Lilly's Safe Haven",
+            "url": "https://cascadiasanctuaries.org/lilly-s-safe-haven/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "River's Wish Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/river-s-wish-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Morningside Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/morningside-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Island Haven Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/island-haven-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "Shanti's Heart Sanctuary",
+            "url": "https://cascadiasanctuaries.org/shanti-s-heart-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "name": "By the Sea Sanctuary",
+            "url": "https://cascadiasanctuaries.org/by-the-sea-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "name": "Wildlings Forest",
+            "url": "https://cascadiasanctuaries.org/wildlings-forest/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "name": "Misspits Rescue",
+            "url": "https://cascadiasanctuaries.org/misspits-rescue/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "name": "The Old Goats Home \u0026 Rescue",
+            "url": "https://cascadiasanctuaries.org/the-old-goats-home-rescue/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 14,
+            "name": "Little Blue Barn Sanctuary",
+            "url": "https://cascadiasanctuaries.org/little-blue-barn-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 15,
+            "name": "Puget Sound Goat Rescue",
+            "url": "https://cascadiasanctuaries.org/puget-sound-goat-rescue/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 16,
+            "name": "Heartwood Haven Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/heartwood-haven-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 17,
+            "name": "Pasado's Safe Haven",
+            "url": "https://cascadiasanctuaries.org/pasado-s-safe-haven/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 18,
+            "name": "Center Valley Animal Rescue",
+            "url": "https://cascadiasanctuaries.org/center-valley-animal-rescue/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 19,
+            "name": "Blackbird Ranch Sanctuary",
+            "url": "https://cascadiasanctuaries.org/blackbird-ranch-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 20,
+            "name": "Pigs Peace Sanctuary",
+            "url": "https://cascadiasanctuaries.org/pigs-peace-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 21,
+            "name": "Veganville Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/veganville-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 22,
+            "name": "Four Roots Ranch Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/four-roots-ranch-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 23,
+            "name": "Elf Sanctuary",
+            "url": "https://cascadiasanctuaries.org/elf-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 24,
+            "name": "Sammamish Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/sammamish-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 25,
+            "name": "Out to Pasture Sanctuary",
+            "url": "https://cascadiasanctuaries.org/out-to-pasture-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 26,
+            "name": "Green Acres Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/green-acres-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 27,
+            "name": "New Moon Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/new-moon-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 28,
+            "name": "Harmony Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/harmony-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 29,
+            "name": "The Happy Herd Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/the-happy-herd-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 30,
+            "name": "Lighthouse Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/lighthouse-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 31,
+            "name": "Rewild Refuge Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/rewild-refuge-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 32,
+            "name": "Tikkun Olam Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/tikkun-olam-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 33,
+            "name": "Living Aloha Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/living-aloha-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 34,
+            "name": "Terra Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/terra-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 35,
+            "name": "Ridge 2 River Animal Haven",
+            "url": "https://cascadiasanctuaries.org/ridge-2-river-animal-haven/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 36,
+            "name": "Cross Creek Alpaca Rescue",
+            "url": "https://cascadiasanctuaries.org/cross-creek-alpaca-rescue/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 37,
+            "name": "The Last Best Place For Animals",
+            "url": "https://cascadiasanctuaries.org/the-last-best-place-for-animals/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 38,
+            "name": "Hearts On Noses Sanctuary",
+            "url": "https://cascadiasanctuaries.org/hearts-on-noses-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 39,
+            "name": "Black Dawg Farm and Sanctuary",
+            "url": "https://cascadiasanctuaries.org/black-dawg-farm-and-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 40,
+            "name": "A Home for Hooves Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/a-home-for-hooves-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 41,
+            "name": "Idaho Farm Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/idaho-farm-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 42,
+            "name": "JustCare Animal Rescue \u0026 Sanctuary",
+            "url": "https://cascadiasanctuaries.org/justcare-animal-rescue-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 43,
+            "name": "Divine Bovine Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/divine-bovine-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 44,
+            "name": "Rooster Haus Rescue",
+            "url": "https://cascadiasanctuaries.org/rooster-haus-rescue/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 45,
+            "name": "Welcome Home Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/welcome-home-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 46,
+            "name": "Blue Barn Farm and Sanctuary",
+            "url": "https://cascadiasanctuaries.org/blue-barn-farm-and-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 47,
+            "name": "Muddy Pug Farm \u0026 Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/muddy-pug-farm-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 48,
+            "name": "Farm Animal Rescue \u0026 Mentoring (FARM)",
+            "url": "https://cascadiasanctuaries.org/farm-animal-rescue-mentoring-farm/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 49,
+            "name": "Star's Piggly Wigglys Sanctuary",
+            "url": "https://cascadiasanctuaries.org/star-s-piggly-wigglys-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 50,
+            "name": "Jill's Farm Animal Rescue",
+            "url": "https://cascadiasanctuaries.org/jill-s-farm-animal-rescue/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 51,
+            "name": "Tumbleweed Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/tumbleweed-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 52,
+            "name": "Dominifarm Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/dominifarm-animal-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 53,
+            "name": "Mountain Meets Farm",
+            "url": "https://cascadiasanctuaries.org/mountain-meets-farm/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 54,
+            "name": "Critters Pet Rescue",
+            "url": "https://cascadiasanctuaries.org/critters-pet-rescue/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 55,
+            "name": "Avalon Microsanctuary",
+            "url": "https://cascadiasanctuaries.org/avalon-microsanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 56,
+            "name": "Sacred Souls Sanctuary",
+            "url": "https://cascadiasanctuaries.org/sacred-souls-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 57,
+            "name": "P.E.A.C.E. Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/p-e-a-c-e-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 58,
+            "name": "Wildwood Farm Sanctuary \u0026 Preserve",
+            "url": "https://cascadiasanctuaries.org/wildwood-farm-sanctuary-preserve/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 59,
+            "name": "Sanctuary One at Double Oak Farm",
+            "url": "https://cascadiasanctuaries.org/sanctuary-one-at-double-oak-farm/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 60,
+            "name": "Oregon Farm Sanctuary",
+            "url": "https://cascadiasanctuaries.org/oregon-farm-sanctuary/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 61,
+            "name": "Kismet Farms Animal Sanctuary",
+            "url": "https://cascadiasanctuaries.org/kismet-farms-animal-sanctuary/"
+          }
+        ]
+      },
+      "inLanguage": "en-US"
+    }
+  ]
+}
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WLW1VFQY9N"></script>
     <script>
       // initialize analytics
@@ -36,7 +496,7 @@
   <body>
     <div class="site-shell" id="directory-app">
       <header class="site-header">
-        <a class="brand" href="#/" aria-label="Cascadia Sanctuaries home">
+        <a class="brand" href="/" data-route="/" aria-label="Cascadia Sanctuaries home">
           <img class="brand-mark" src="/static/media/cascadia-sanctuaries-logo.png?v=20260812" alt="">
           <span class="brand-name">Cascadia Sanctuaries</span>
         </a>
@@ -54,7 +514,7 @@
       </header>
 
       <main class="map-stage">
-        <div id="map" aria-label="Map of farm sanctuaries in Cascadia"></div>
+        <div id="map" role="region" aria-label="Map of farm sanctuaries in Cascadia"></div>
 
         <section class="discovery-panel" aria-labelledby="page-title">
           <p class="eyebrow">A guide to compassionate places</p>
@@ -88,13 +548,10 @@
 
           <div class="directory-meta" aria-live="polite">
             <span id="result-count">Loading directory…</span>
-            <button class="reset-map" id="reset-map" type="button">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20 10a8 8 0 1 0-2.3 5.7L20 18"></path>
-                <path d="M20 10V5h-5"></path>
-              </svg>
-              Reset map
-            </button>
+            <p class="maker-credit" data-nosnippet>
+              Made with love by
+              <a href="https://ballydidean.farm" target="_blank" rel="noopener noreferrer">Ballydídean</a>
+            </p>
           </div>
 
           <div class="search-results" id="search-results" aria-live="polite"></div>
@@ -119,7 +576,7 @@
     </div>
 
     <div class="email-view" id="email-view" hidden>
-      <a href="#/">← Back to the directory</a>
+      <a href="/" data-route="/">← Back to the directory</a>
       <h1>Sanctuary email directory</h1>
       <p id="email-list">Loading…</p>
     </div>
@@ -146,6 +603,6 @@
     </svg>
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="/static/js/site.js?v=20260812-open-map"></script>
+    <script src="/static/js/site.js?v=20260812-clean-routes"></script>
   </body>
 </html>
