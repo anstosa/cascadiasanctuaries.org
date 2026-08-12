@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="64 60 384 412">
+  <title>Cascadia heart and mountain emblem</title>
+  <defs>
+    <mask id="mountain-cutout">
+      <rect width="512" height="512" fill="white"/>
+      <path
+        d="m137 303 74-109 59 80 59-70 50 73"
+        fill="none"
+        stroke="black"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="28"
+      />
+    </mask>
+  </defs>
+  <path
+    d="M256 456C225 423 76 337 76 204c0-76 51-128 122-128 30 0 52 16 58 44 6-28 28-44 58-44 71 0 122 52 122 128 0 133-149 219-180 252Z"
+    fill="#17382d"
+    mask="url(#mountain-cutout)"
+  />
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Cascadia Sanctuaries</title>
+  <rect width="512" height="512" rx="112" fill="#17382d"/>
+  <g
+    fill="none"
+    stroke="#ffffff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="25"
+  >
+    <path d="M49 401 164 213l46 69 46-150 46 150 46-69 115 188H325"/>
+    <path d="M187 401H49"/>
+    <path d="M256 401 184 333c-32-30-34-76-7-98 27-22 62-12 79 16 17-28 52-38 79-16 27 22 25 68-7 98Z"/>
+  </g>
+</svg>
