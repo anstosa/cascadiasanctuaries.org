@@ -46,10 +46,10 @@
       rel="stylesheet"
     >
     <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css"
       rel="stylesheet"
     >
-    <link href="/static/css/site.css?v=20260812-clean-routes" rel="stylesheet">
+    <link href="/static/css/site.css?v=20260812-resilient-map" rel="stylesheet">
     <title>Welcome Home Animal Sanctuary | Cascadia Sanctuaries</title>
     <script id="structured-data" type="application/ld+json">
 {
@@ -184,7 +184,7 @@
               <path d="m6 6 12 12M18 6 6 18"></path>
             </svg>
           </button>
-          <div id="detail-content"><p class="detail-kicker">Sanctuary profile</p><h2>Welcome Home Animal Sanctuary</h2><p class="detail-place">Creswell, OR</p><div class="detail-links"><a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=82940%20Hurlburt%20Lane%2C%20Creswell%2C%20OR" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>82940 Hurlburt Lane, Creswell, OR</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="https://welcomehomesanctuary.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span>welcomehomesanctuary.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="mailto:welcomehomeanimalsanctuary@gmail.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span>welcomehomeanimalsanctuary@gmail.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="tel:+15418709952" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span>(541) 870–9952</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div></div>
+          <div id="detail-content"><p class="detail-kicker">Sanctuary profile</p><h2>Welcome Home Animal Sanctuary</h2><div class="detail-meta"><p class="detail-place">Creswell, OR</p><div class="detail-social-icons"><a class="detail-social-link" href="https://instagram.com/welcomehomeanimalsanctuary" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><img src="/static/media/instagram-brands.813fd06b51b26e101fbbdde32e64af13.svg" alt=""></a><a class="detail-social-link" href="https://facebook.com/welcomehomeanimalsanctuary" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><img src="/static/media/facebook-f-brands.8adca75361b744d17bbeb17b9c804d9d.svg" alt=""></a></div></div><div class="detail-links"><a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=82940%20Hurlburt%20Lane%2C%20Creswell%2C%20OR" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>82940 Hurlburt Lane, Creswell, OR</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="https://welcomehomesanctuary.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span>welcomehomesanctuary.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="mailto:welcomehomeanimalsanctuary@gmail.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span>welcomehomeanimalsanctuary@gmail.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="tel:+15418709952" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span>(541) 870–9952</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div></div>
         </aside>
 
         <div class="map-status" id="map-status">
@@ -192,7 +192,6 @@
           <span>Gathering sanctuary locations…</span>
         </div>
 
-        <p class="map-hint">Select a heart to learn more</p>
       </main>
     </div>
 
@@ -223,7 +222,7 @@
       </symbol>
     </svg>
 
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="/static/js/site.js?v=20260812-clean-routes"></script>
+    <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+    <script src="/static/js/site.js?v=20260812-resilient-map"></script>
   </body>
 </html>

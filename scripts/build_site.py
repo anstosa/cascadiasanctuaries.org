@@ -356,6 +356,48 @@ def static_detail_link(href, icon_id, label):
     )
 
 
+# render static social links
+def static_social_links(sanctuary):
+    """Render configured social profiles for prerendered sanctuary pages."""
+    profile_fields = [
+        ("Instagram", sanctuary.get("instagram"), "https://instagram.com/{value}", "instagram-brands.813fd06b51b26e101fbbdde32e64af13.svg"),
+        ("Facebook", sanctuary.get("facebook"), "https://facebook.com/{value}", "facebook-f-brands.8adca75361b744d17bbeb17b9c804d9d.svg"),
+        ("Twitter", sanctuary.get("twitter"), "https://twitter.com/{value}", "twitter-brands.7b0966c673ac146ae16dfeaa6ecc2eb1.svg"),
+        ("TikTok", sanctuary.get("tiktok"), "https://tiktok.com/@{value}", "tiktok-brands.2cd5bfa897010051ff6d10c8a1c370ae.svg")
+    ]
+    links = []
+
+    # render username-based profiles
+    for label, raw_value, url_template, icon_name in profile_fields:
+        value = str(raw_value or "").strip().lstrip("@")
+
+        # omit empty profiles
+        if not value:
+            continue
+
+        href = url_template.format(value=value)
+        links.append(
+            f'<a class="detail-social-link" href="{html.escape(href, quote=True)}" '
+            f'target="_blank" rel="noopener noreferrer" aria-label="{label}" title="{label}">'
+            f'<img src="/static/media/{icon_name}" alt=""></a>'
+        )
+
+    youtube = normalize_url(
+        sanctuary.get("youtube"),
+        context=f'YouTube URL for {sanctuary["name"]}'
+    )
+
+    # include youtube profiles
+    if youtube:
+        links.append(
+            f'<a class="detail-social-link" href="{html.escape(youtube, quote=True)}" '
+            'target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">'
+            '<img src="/static/media/youtube-brands.87350b41a36870581ed6bbca31d713b0.svg" alt=""></a>'
+        )
+
+    return "".join(links)
+
+
 # prerender sanctuary profiles
 def render_sanctuary_body(page, sanctuary):
     """Expose sanctuary profile content before the SPA initializes."""
@@ -398,11 +440,15 @@ def render_sanctuary_body(page, sanctuary):
         static_detail_link(f"mailto:{email_address}" if email_address else "", "mail", email_address),
         static_detail_link(f"tel:+1{phone_digits}" if phone_digits else "", "phone", format_phone(phone))
     ])
+    social_links = static_social_links(sanctuary)
+    social_icons = f'<div class="detail-social-icons">{social_links}</div>' if social_links else ""
     facts_html = f'<div class="detail-facts">{"".join(facts)}</div>' if facts else ""
     profile_html = (
         '<p class="detail-kicker">Sanctuary profile</p>'
         f'<h2>{html.escape(sanctuary["name"])}</h2>'
+        '<div class="detail-meta">'
         f'<p class="detail-place">{html.escape(city_state or "Cascadia")}</p>'
+        f'{social_icons}</div>'
         f'{facts_html}'
         f'<div class="detail-links">{contact_links}</div>'
     )

@@ -46,10 +46,10 @@
       rel="stylesheet"
     >
     <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css"
       rel="stylesheet"
     >
-    <link href="/static/css/site.css?v=20260812-clean-routes" rel="stylesheet">
+    <link href="/static/css/site.css?v=20260812-resilient-map" rel="stylesheet">
     <title>Critters Pet Rescue | Cascadia Sanctuaries</title>
     <script id="structured-data" type="application/ld+json">
 {
@@ -178,7 +178,7 @@
               <path d="m6 6 12 12M18 6 6 18"></path>
             </svg>
           </button>
-          <div id="detail-content"><p class="detail-kicker">Sanctuary profile</p><h2>Critters Pet Rescue</h2><p class="detail-place">Clinton, WA</p><div class="detail-facts"><div class="detail-fact"><span class="detail-fact-label">Founded</span><span class="detail-fact-value">2005</span></div><div class="detail-fact"><span class="detail-fact-label">Residents</span><span class="detail-fact-value">50-100</span></div></div><div class="detail-links"><a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=6938%20High%20Point%20Dr%2C%20Clinton%2C%20WA" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>6938 High Point Dr, Clinton, WA</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="https://whidbeycritters.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span>whidbeycritters.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="mailto:critters@whidbeycritters.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span>critters@whidbeycritters.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="tel:+13603411456" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span>(360) 341–1456</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div></div>
+          <div id="detail-content"><p class="detail-kicker">Sanctuary profile</p><h2>Critters Pet Rescue</h2><div class="detail-meta"><p class="detail-place">Clinton, WA</p><div class="detail-social-icons"><a class="detail-social-link" href="https://facebook.com/100092229662732" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><img src="/static/media/facebook-f-brands.8adca75361b744d17bbeb17b9c804d9d.svg" alt=""></a></div></div><div class="detail-facts"><div class="detail-fact"><span class="detail-fact-label">Founded</span><span class="detail-fact-value">2005</span></div><div class="detail-fact"><span class="detail-fact-label">Residents</span><span class="detail-fact-value">50-100</span></div></div><div class="detail-links"><a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=6938%20High%20Point%20Dr%2C%20Clinton%2C%20WA" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>6938 High Point Dr, Clinton, WA</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="https://whidbeycritters.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span>whidbeycritters.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="mailto:critters@whidbeycritters.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span>critters@whidbeycritters.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="tel:+13603411456" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span>(360) 341–1456</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div></div>
         </aside>
 
         <div class="map-status" id="map-status">
@@ -186,7 +186,6 @@
           <span>Gathering sanctuary locations…</span>
         </div>
 
-        <p class="map-hint">Select a heart to learn more</p>
       </main>
     </div>
 
@@ -217,7 +216,7 @@
       </symbol>
     </svg>
 
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="/static/js/site.js?v=20260812-clean-routes"></script>
+    <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+    <script src="/static/js/site.js?v=20260812-resilient-map"></script>
   </body>
 </html>

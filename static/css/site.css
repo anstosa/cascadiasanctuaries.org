@@ -138,16 +138,16 @@ input:focus-visible {
   width: 100%;
 }
 
-.mapboxgl-canvas {
+.maplibregl-canvas {
   outline: none;
 }
 
-.mapboxgl-ctrl-bottom-right {
+.maplibregl-ctrl-bottom-right {
   bottom: 14px;
   right: 18px;
 }
 
-.mapboxgl-ctrl-group {
+.maplibregl-ctrl-group {
   border: 1px solid var(--line);
   border-radius: 2px;
   box-shadow: 0 6px 24px rgba(16, 42, 34, 0.12);
@@ -458,7 +458,18 @@ input:focus-visible {
 .detail-place {
   color: rgba(255, 255, 255, 0.65);
   font-size: 13px;
-  margin: 0 0 25px;
+  margin: 0;
+  min-width: 0;
+}
+
+/* align place and profiles */
+.detail-meta {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  min-height: 30px;
 }
 
 .detail-facts {
@@ -523,22 +534,9 @@ input:focus-visible {
   width: 16px;
 }
 
-.detail-socials {
-  align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  color: var(--sage-300);
-  display: flex;
-  font-size: 10px;
-  font-weight: 600;
-  justify-content: space-between;
-  letter-spacing: 0.12em;
-  margin-top: 22px;
-  padding-top: 20px;
-  text-transform: uppercase;
-}
-
 .detail-social-icons {
   display: flex;
+  flex: 0 0 auto;
   gap: 7px;
 }
 
@@ -560,9 +558,9 @@ input:focus-visible {
 
 .detail-social-link img {
   filter: brightness(0) invert(1);
-  height: 14px;
+  height: 15px;
   opacity: 0.82;
-  width: 14px;
+  width: 15px;
 }
 
 .map-status {
@@ -589,6 +587,7 @@ input:focus-visible {
 
 .map-status.is-error {
   color: #8a3224;
+  z-index: 13;
 }
 
 .loader {
@@ -604,20 +603,6 @@ input:focus-visible {
   to {
     transform: rotate(360deg);
   }
-}
-
-.map-hint {
-  bottom: 21px;
-  color: rgba(28, 37, 31, 0.62);
-  font-size: 10px;
-  left: 50%;
-  letter-spacing: 0.06em;
-  margin: 0;
-  pointer-events: none;
-  position: absolute;
-  text-transform: uppercase;
-  transform: translateX(-50%);
-  z-index: 6;
 }
 
 .icon-sprite {
@@ -743,12 +728,18 @@ input:focus-visible {
 
   .detail-panel {
     bottom: 0;
+    height: 66.6667%;
     left: 0;
-    max-height: 54%;
+    max-height: 66.6667%;
     padding: 27px 24px 24px;
     right: 0;
     transform: translateY(24px);
     width: 100%;
+  }
+
+  /* reserve the uncovered map */
+  .map-stage.has-open-detail #map {
+    height: 33.3333%;
   }
 
   .detail-panel.is-open {
@@ -763,11 +754,12 @@ input:focus-visible {
     display: none;
   }
 
-  .map-hint {
-    bottom: 10px;
+  /* expose mobile map failures */
+  .map-status.is-error {
+    display: flex;
   }
 
-  .mapboxgl-ctrl-bottom-right {
+  .maplibregl-ctrl-bottom-right {
     bottom: 26px;
     right: 6px;
   }

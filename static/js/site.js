@@ -395,7 +395,7 @@ function selectedMarkerOffset() {
 
   // center above full-width cards
   if (isFullWidth) {
-    return [0, -elements.detailPanel.offsetHeight / 2];
+    return [0, 0];
   }
 
   const discoveryRect = elements.discoveryPanel.getBoundingClientRect();
@@ -492,7 +492,10 @@ function selectSanctuary(sanctuary, updateRoute = true) {
   elements.detailContent.innerHTML = `
     <p class="detail-kicker">Sanctuary profile</p>
     <h2>${escapeHtml(sanctuary.name)}</h2>
-    <p class="detail-place">${escapeHtml(cityState || "Cascadia")}</p>
+    <div class="detail-meta">
+      <p class="detail-place">${escapeHtml(cityState || "Cascadia")}</p>
+      ${socials ? `<div class="detail-social-icons">${socials}</div>` : ""}
+    </div>
     ${facts.length ? `<div class="detail-facts">${facts.join("")}</div>` : ""}
     <div class="detail-links">
       ${detailLink({ href: mapsUrl, iconId: "map-pin", label: address })}
@@ -500,12 +503,13 @@ function selectSanctuary(sanctuary, updateRoute = true) {
       ${detailLink({ href: sanctuary.email ? `mailto:${sanctuary.email}` : "", iconId: "mail", label: sanctuary.email })}
       ${detailLink({ href: sanctuary.phone ? `tel:+1${String(sanctuary.phone).replace(/\D/g, "")}` : "", iconId: "phone", label: formatPhone(sanctuary.phone) })}
     </div>
-    ${socials ? `<div class="detail-socials"><span>Follow along</span><div class="detail-social-icons">${socials}</div></div>` : ""}
   `;
 
   elements.detailPanel.classList.add("is-open");
   elements.detailPanel.setAttribute("aria-hidden", "false");
   elements.mapStage.classList.add("has-open-detail");
+  // resize to the uncovered mobile viewport
+  state.map?.resize();
 
   focusSanctuary(sanctuary);
 }
@@ -517,6 +521,8 @@ function closeDetails(updateRoute = true, restoreCamera = true) {
   elements.detailPanel.classList.remove("is-open");
   elements.detailPanel.setAttribute("aria-hidden", "true");
   elements.mapStage.classList.remove("has-open-detail");
+  // restore the full map viewport
+  state.map?.resize();
 
   // return to the directory route
   if (updateRoute && hadSelection) {
@@ -599,7 +605,7 @@ function addMarkers() {
       selectSanctuary(sanctuary);
     });
 
-    const marker = new window.mapboxgl.Marker({ element, anchor: "center" })
+    const marker = new window.maplibregl.Marker({ element, anchor: "center" })
       .setLngLat([Number(sanctuary.longitude), Number(sanctuary.latitude)])
       .addTo(state.map);
 
@@ -676,6 +682,11 @@ function filterSanctuaries(value) {
 
 // derive directory bounds
 function calculateBounds() {
+  // skip map-specific bounds without the renderer
+  if (!window.maplibregl) {
+    return null;
+  }
+
   // collect mapped coordinates
   const coordinates = state.sanctuaries
     .filter(hasCoordinates)
@@ -689,7 +700,7 @@ function calculateBounds() {
     return null;
   }
 
-  const bounds = new window.mapboxgl.LngLatBounds(coordinates[0], coordinates[0]);
+  const bounds = new window.maplibregl.LngLatBounds(coordinates[0], coordinates[0]);
   // extend regional bounds
   coordinates.slice(1).forEach((coordinate) => {
     bounds.extend(coordinate);
@@ -811,40 +822,35 @@ async function loadSanctuaries() {
 
 // initialize map experience
 function initializeMap() {
+  // load the local directory independently
+  loadSanctuaries();
+
   // guard missing map library
-  if (!window.mapboxgl) {
+  if (!window.maplibregl) {
     elements.mapStatus.classList.add("is-error");
     elements.mapStatus.textContent = "The map could not load. Please refresh to try again.";
     return;
   }
 
-  state.map = new window.mapboxgl.Map({
-    container: "map",
-    center: DEFAULT_CENTER,
-    projection: "mercator",
-    style: {
-      version: 8,
-      sources: {
-        openStreetMap: {
-          type: "raster",
-          tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-          tileSize: 256,
-          attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }
-      },
-      layers: [
-        {
-          id: "open-street-map",
-          type: "raster",
-          source: "openStreetMap"
-        }
-      ]
-    },
-    zoom: DEFAULT_ZOOM,
-    attributionControl: false
-  });
-  state.map.addControl(new window.mapboxgl.NavigationControl({ showCompass: false }), "bottom-right");
-  state.map.addControl(new window.mapboxgl.AttributionControl({ compact: true }), "bottom-right");
+  // report renderer startup failures without disabling the directory
+  try {
+    state.map = new window.maplibregl.Map({
+      container: "map",
+      center: DEFAULT_CENTER,
+      projection: "mercator",
+      style: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
+      zoom: DEFAULT_ZOOM,
+      attributionControl: false
+    });
+  } catch (error) {
+    console.error("Map initialization error", error);
+    elements.mapStatus.classList.add("is-error");
+    elements.mapStatus.textContent = "The map could not load. The sanctuary directory is still available.";
+    return;
+  }
+
+  state.map.addControl(new window.maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+  state.map.addControl(new window.maplibregl.AttributionControl({ compact: true }), "bottom-left");
 
   // preserve intentional navigation
   state.map.on("movestart", (event) => {
@@ -867,10 +873,8 @@ function initializeMap() {
 
   // report map errors
   state.map.on("error", (event) => {
-    console.error("Mapbox error", event.error);
+    console.error("Map error", event.error);
   });
-
-  loadSanctuaries();
 }
 
 // wire interface controls

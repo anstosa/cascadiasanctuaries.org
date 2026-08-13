@@ -46,10 +46,10 @@
       rel="stylesheet"
     >
     <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css"
       rel="stylesheet"
     >
-    <link href="/static/css/site.css?v=20260812-clean-routes" rel="stylesheet">
+    <link href="/static/css/site.css?v=20260812-resilient-map" rel="stylesheet">
     <title>Pigs Peace Sanctuary | Cascadia Sanctuaries</title>
     <script id="structured-data" type="application/ld+json">
 {
@@ -186,7 +186,7 @@
               <path d="m6 6 12 12M18 6 6 18"></path>
             </svg>
           </button>
-          <div id="detail-content"><p class="detail-kicker">Sanctuary profile</p><h2>Pigs Peace Sanctuary</h2><p class="detail-place">Stanwood, WA</p><div class="detail-facts"><div class="detail-fact"><span class="detail-fact-label">Founded</span><span class="detail-fact-value">1994</span></div><div class="detail-fact"><span class="detail-fact-label">Residents</span><span class="detail-fact-value">100-200</span></div></div><div class="detail-links"><a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=Stanwood%2C%20WA" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>Stanwood, WA</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="https://pigspeace.org" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span>pigspeace.org</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="mailto:pigspeace@gmail.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span>pigspeace@gmail.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="tel:+13606296433" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span>(360) 629–6433</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div></div>
+          <div id="detail-content"><p class="detail-kicker">Sanctuary profile</p><h2>Pigs Peace Sanctuary</h2><div class="detail-meta"><p class="detail-place">Stanwood, WA</p><div class="detail-social-icons"><a class="detail-social-link" href="https://instagram.com/pigspeace" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><img src="/static/media/instagram-brands.813fd06b51b26e101fbbdde32e64af13.svg" alt=""></a><a class="detail-social-link" href="https://facebook.com/pigspeace" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><img src="/static/media/facebook-f-brands.8adca75361b744d17bbeb17b9c804d9d.svg" alt=""></a><a class="detail-social-link" href="https://twitter.com/PigsPeaceWA" target="_blank" rel="noopener noreferrer" aria-label="Twitter" title="Twitter"><img src="/static/media/twitter-brands.7b0966c673ac146ae16dfeaa6ecc2eb1.svg" alt=""></a><a class="detail-social-link" href="https://www.youtube.com/user/PigsPeace" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><img src="/static/media/youtube-brands.87350b41a36870581ed6bbca31d713b0.svg" alt=""></a></div></div><div class="detail-facts"><div class="detail-fact"><span class="detail-fact-label">Founded</span><span class="detail-fact-value">1994</span></div><div class="detail-fact"><span class="detail-fact-label">Residents</span><span class="detail-fact-value">100-200</span></div></div><div class="detail-links"><a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=Stanwood%2C%20WA" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>Stanwood, WA</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="https://pigspeace.org" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span>pigspeace.org</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="mailto:pigspeace@gmail.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span>pigspeace@gmail.com</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="tel:+13606296433" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-phone"></use></svg><span>(360) 629–6433</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div></div>
         </aside>
 
         <div class="map-status" id="map-status">
@@ -194,7 +194,6 @@
           <span>Gathering sanctuary locations…</span>
         </div>
 
-        <p class="map-hint">Select a heart to learn more</p>
       </main>
     </div>
 
@@ -225,7 +224,7 @@
       </symbol>
     </svg>
 
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="/static/js/site.js?v=20260812-clean-routes"></script>
+    <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+    <script src="/static/js/site.js?v=20260812-resilient-map"></script>
   </body>
 </html>

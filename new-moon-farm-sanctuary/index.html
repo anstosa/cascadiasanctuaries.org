@@ -46,10 +46,10 @@
       rel="stylesheet"
     >
     <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+      href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css"
       rel="stylesheet"
     >
-    <link href="/static/css/site.css?v=20260812-clean-routes" rel="stylesheet">
+    <link href="/static/css/site.css?v=20260812-resilient-map" rel="stylesheet">
     <title>New Moon Farm Sanctuary | Cascadia Sanctuaries</title>
     <script id="structured-data" type="application/ld+json">
 {
@@ -185,7 +185,7 @@
               <path d="m6 6 12 12M18 6 6 18"></path>
             </svg>
           </button>
-          <div id="detail-content"><p class="detail-kicker">Sanctuary profile</p><h2>New Moon Farm Sanctuary</h2><p class="detail-place">Arlington, WA</p><div class="detail-facts"><div class="detail-fact"><span class="detail-fact-label">Founded</span><span class="detail-fact-value">1998</span></div></div><div class="detail-links"><a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=27302%2059th%20Ave%20NE%2C%20Arlington%2C%20WA" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>27302 59th Ave NE, Arlington, WA</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="https://newmoonfarm.org" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span>newmoonfarm.org</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="mailto:info@newmoonfarm.org" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span>info@newmoonfarm.org</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div></div>
+          <div id="detail-content"><p class="detail-kicker">Sanctuary profile</p><h2>New Moon Farm Sanctuary</h2><div class="detail-meta"><p class="detail-place">Arlington, WA</p><div class="detail-social-icons"><a class="detail-social-link" href="https://instagram.com/newmoonfarmsanctuary" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><img src="/static/media/instagram-brands.813fd06b51b26e101fbbdde32e64af13.svg" alt=""></a><a class="detail-social-link" href="https://facebook.com/newmoonfarm" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><img src="/static/media/facebook-f-brands.8adca75361b744d17bbeb17b9c804d9d.svg" alt=""></a><a class="detail-social-link" href="https://www.youtube.com/channel/UCjrvWD8U9RAgzemjhdQuB5A" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><img src="/static/media/youtube-brands.87350b41a36870581ed6bbca31d713b0.svg" alt=""></a></div></div><div class="detail-facts"><div class="detail-fact"><span class="detail-fact-label">Founded</span><span class="detail-fact-value">1998</span></div></div><div class="detail-links"><a class="detail-link" href="https://www.google.com/maps/search/?api=1&amp;query=27302%2059th%20Ave%20NE%2C%20Arlington%2C%20WA" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>27302 59th Ave NE, Arlington, WA</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="https://newmoonfarm.org" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-globe"></use></svg><span>newmoonfarm.org</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a><a class="detail-link" href="mailto:info@newmoonfarm.org" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#icon-mail"></use></svg><span>info@newmoonfarm.org</span><svg aria-hidden="true"><use href="#icon-external"></use></svg></a></div></div>
         </aside>
 
         <div class="map-status" id="map-status">
@@ -193,7 +193,6 @@
           <span>Gathering sanctuary locations…</span>
         </div>
 
-        <p class="map-hint">Select a heart to learn more</p>
       </main>
     </div>
 
@@ -224,7 +223,7 @@
       </symbol>
     </svg>
 
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="/static/js/site.js?v=20260812-clean-routes"></script>
+    <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+    <script src="/static/js/site.js?v=20260812-resilient-map"></script>
   </body>
 </html>
